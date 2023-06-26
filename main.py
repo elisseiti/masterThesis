@@ -54,12 +54,12 @@ def make_generator_model():
     model.add(tf.keras.layers.BatchNormalization())
     model.add(tf.keras.layers.LeakyReLU())
 
-    model.add(tf.keras.layers.Conv2DTranspose(64, (5, 5), strides=(2, 2), padding='same', use_bias=False))
+    model.add(tf.keras.layers.Conv3DTranspose(64, (5, 5), strides=(2, 2), padding='same', use_bias=False))
     assert model.output_shape == (None, 14, 14, 64)
     model.add(tf.keras.layers.BatchNormalization())
     model.add(tf.keras.layers.LeakyReLU())
 
-    model.add(tf.keras.layers.Conv2DTranspose(1, (5, 5), strides=(2, 2), padding='same', use_bias=False, activation='tanh'))
+    model.add(tf.keras.layers.Conv3DTranspose(1, (5, 5), strides=(2, 2), padding='same', use_bias=False, activation='tanh'))
     assert model.output_shape == (None, 28, 28, 1)
 
     return model
